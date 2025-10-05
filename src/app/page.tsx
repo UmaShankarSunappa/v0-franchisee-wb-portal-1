@@ -865,9 +865,9 @@ export default function LandingPage() {
                         <Mail className="h-5 w-5 text-cyan-800 mt-0.5" />
                         <div>
                           <p className="font-medium text-gray-900">Email</p>
-                          <a href="mailto:franchise@medplusindia.com" className="text-cyan-800 hover:underline">
-                            franchise@medplusindia.com
-                          </a>
+                          <a href="mailto:franchise@medplusindia.com" className="text-cyan-800 hover:underline !whitespace-pre-line">franchisee@medplusindia.com
+
+                        </a>
                         </div>
                       </div>
                       <div className="flex items-start gap-3">
