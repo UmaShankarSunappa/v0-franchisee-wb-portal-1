@@ -872,12 +872,46 @@ export default function LandingPage() {
                       </div>
                       <div className="flex items-start gap-3">
                         <Phone className="h-5 w-5 text-cyan-800 mt-0.5" />
-                        <div>
-                          <p className="font-medium text-gray-900">Phone</p>
-                          <a href="tel:+918688581100" className="text-cyan-800 hover:underline">
-                            +91 86885 81100
-                          </a>
-                          <p className="text-sm text-gray-600">(Andhra Pradesh & Telangana)</p>
+                        <div className="w-full">
+                          <p className="font-medium text-gray-900 mb-2">Regional Phone Numbers</p>
+                          <div className="space-y-2">
+                            <div>
+                              <a href="tel:+918688581100" className="text-cyan-800 hover:underline font-medium">
+                                +91 86885 81100
+                              </a>
+                              <p className="text-sm text-gray-600">(Andhra Pradesh & Telangana)</p>
+                            </div>
+                            <div>
+                              <a href="tel:+918688581101" className="text-cyan-800 hover:underline font-medium">
+                                +91 86885 81101
+                              </a>
+                              <p className="text-sm text-gray-600">(Tamil Nadu)</p>
+                            </div>
+                            <div>
+                              <a href="tel:+918688581102" className="text-cyan-800 hover:underline font-medium">
+                                +91 86885 81102
+                              </a>
+                              <p className="text-sm text-gray-600">(Karnataka)</p>
+                            </div>
+                            <div>
+                              <a href="tel:+918688581103" className="text-cyan-800 hover:underline font-medium">
+                                +91 86885 81103
+                              </a>
+                              <p className="text-sm text-gray-600">(Maharashtra)</p>
+                            </div>
+                            <div>
+                              <a href="tel:+918688581104" className="text-cyan-800 hover:underline font-medium">
+                                +91 86885 81104
+                              </a>
+                              <p className="text-sm text-gray-600">(West Bengal)</p>
+                            </div>
+                            <div>
+                              <a href="tel:+918688581105" className="text-cyan-800 hover:underline font-medium">
+                                +91 86885 81105
+                              </a>
+                              <p className="text-sm text-gray-600">(Madhya Pradesh)</p>
+                            </div>
+                          </div>
                         </div>
                       </div>
                       <div className="flex items-start gap-3">
