@@ -105,7 +105,7 @@ export default function LandingPage() {
     role: "Franchisee Owner",
     city: "Chennai, Tamil Nadu",
     store: "Medplus T Nagar",
-    yearsWithMedplus: "4 years with Medplus",
+    yearsWithMedplus: "1 year with Medplus",
     quote: "The comprehensive training and ongoing support from Medplus have been invaluable. From inventory management to customer service, every aspect is well-structured. My store has become a trusted healthcare destination in the community.",
     rating: 5,
     achievement: "500+ Daily Customers"
@@ -661,7 +661,7 @@ export default function LandingPage() {
                               </svg>
                         )}
                           </div>
-                          <span className="text-xs text-gray-500 !whitespace-pre-line !whitespace-pre-line">{testimonial.yearsWithMedplus}</span>
+                          <span className="text-xs text-gray-500 !whitespace-pre-line !whitespace-pre-line !whitespace-pre-line">{testimonial.yearsWithMedplus}</span>
                         </div>
 
                         {/* Quote */}
