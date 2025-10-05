@@ -94,7 +94,7 @@ export default function LandingPage() {
     role: "Franchisee Owner",
     city: "Mumbai, Maharashtra",
     store: "Medplus Andheri West",
-    yearsWithMedplus: "7 years with Medplus",
+    yearsWithMedplus: "1 years with Medplus",
     quote: "As one of the early franchisees, I've witnessed Medplus's incredible growth journey. The continuous innovation in technology and the dedicated support team make operations seamless. Proud to be part of this healthcare revolution.",
     rating: 5,
     achievement: "7 Years of Success"
@@ -661,7 +661,7 @@ export default function LandingPage() {
                               </svg>
                         )}
                           </div>
-                          <span className="text-xs text-gray-500 !whitespace-pre-line">{testimonial.yearsWithMedplus}</span>
+                          <span className="text-xs text-gray-500 !whitespace-pre-line !whitespace-pre-line">{testimonial.yearsWithMedplus}</span>
                         </div>
 
                         {/* Quote */}
