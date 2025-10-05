@@ -37,32 +37,48 @@ export default function LandingPage() {
 
   const testimonials = [
     {
-      name: "Rajesh Kumar",
+      name: "Dr. Rajesh Kumar",
+      initials: "DRK",
       role: "Franchisee Owner",
-      location: "Hyderabad, Telangana",
-      quote: "Partnering with Medplus has been a game-changer for my business. The support system is excellent, and the brand recognition brings customers through the door every day. I've seen consistent growth since opening my store 3 years ago.",
-      rating: 5
+      city: "Bangalore, Karnataka",
+      store: "Medplus Koramangala",
+      yearsWithMedplus: "5 years with Medplus",
+      quote: "Partnering with Medplus has been the best decision for my pharmacy business. The brand recognition and supply chain efficiency have helped me grow 40% year-over-year. The technology support and training programs are exceptional.",
+      rating: 5,
+      achievement: "40% YoY Growth"
     },
     {
-      name: "Priya Sharma",
+      name: "Mrs. Priya Sharma",
+      initials: "MPS",
       role: "Franchisee Owner",
-      location: "Bangalore, Karnataka",
-      quote: "The technology and supply chain efficiency that Medplus provides makes operations so smooth. I can focus on serving my customers while the backend support handles inventory and logistics seamlessly.",
-      rating: 5
+      city: "Hyderabad, Telangana",
+      store: "Medplus Banjara Hills",
+      yearsWithMedplus: "3 years with Medplus",
+      quote: "I converted my existing medical shop to a Medplus franchise three years ago, and it transformed my business completely. The operational support and marketing materials have made a huge difference. My customers trust the Medplus brand.",
+      rating: 5,
+      achievement: "3x Revenue Increase"
     },
     {
-      name: "Anil Reddy",
+      name: "Mr. Anil Patel",
+      initials: "MAP",
       role: "Franchisee Owner",
-      location: "Vijayawada, Andhra Pradesh",
-      quote: "What impressed me most is the comprehensive training and ongoing support. From day one, the Medplus team was there to guide me. The marketing materials and promotional support have been invaluable for local customer acquisition.",
-      rating: 5
+      city: "Mumbai, Maharashtra",
+      store: "Medplus Andheri West",
+      yearsWithMedplus: "7 years with Medplus",
+      quote: "As one of the early franchisees, I've witnessed Medplus's incredible growth journey. The continuous innovation in technology and the dedicated support team make operations seamless. Proud to be part of this healthcare revolution.",
+      rating: 5,
+      achievement: "7 Years of Success"
     },
     {
-      name: "Meera Iyer",
+      name: "Dr. Meena Reddy",
+      initials: "DMR",
       role: "Franchisee Owner",
-      location: "Chennai, Tamil Nadu",
-      quote: "Being part of the Medplus network gives me credibility in my community. Customers trust the brand, and the competitive pricing structure allows me to offer great value while maintaining healthy margins.",
-      rating: 5
+      city: "Chennai, Tamil Nadu",
+      store: "Medplus T Nagar",
+      yearsWithMedplus: "4 years with Medplus",
+      quote: "The comprehensive training and ongoing support from Medplus have been invaluable. From inventory management to customer service, every aspect is well-structured. My store has become a trusted healthcare destination in the community.",
+      rating: 5,
+      achievement: "500+ Daily Customers"
     }
   ];
 
@@ -536,25 +552,50 @@ export default function LandingPage() {
                     {testimonials.map((testimonial, index) => (
                       <div
                         key={index}
-                        className="relative bg-gradient-to-br from-cyan-50 to-white p-6 rounded-lg border border-cyan-100"
+                        className="relative bg-white p-6 rounded-lg border border-gray-200 shadow-sm hover:shadow-md transition-shadow"
                       >
-                        <Quote className="absolute top-4 right-4 h-8 w-8 text-cyan-200" />
-                        <p className="text-gray-700 italic mb-4 relative z-10">"{testimonial.quote}"</p>
-                        <div className="flex items-center gap-1 mb-3">
-                          {[...Array(testimonial.rating)].map((_, i) => (
-                            <svg
-                              key={i}
-                              className="h-4 w-4 fill-cyan-800"
-                              viewBox="0 0 20 20"
-                            >
-                              <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z" />
-                            </svg>
-                          ))}
+                        <Quote className="absolute top-4 right-4 h-12 w-12 text-cyan-300" />
+                        
+                        {/* Header with Avatar and Info */}
+                        <div className="flex items-start gap-4 mb-4">
+                          <div className="flex-shrink-0 h-12 w-12 rounded-full bg-cyan-600 text-white flex items-center justify-center font-bold text-sm">
+                            {testimonial.initials}
+                          </div>
+                          <div className="flex-1 min-w-0">
+                            <h4 className="font-semibold text-gray-900 text-base">{testimonial.name}</h4>
+                            <p className="text-sm text-gray-600">{testimonial.city}</p>
+                            <p className="text-xs text-gray-500">{testimonial.store}</p>
+                          </div>
                         </div>
-                        <div>
-                          <p className="font-semibold text-gray-900">{testimonial.name}</p>
-                          <p className="text-sm text-gray-600">{testimonial.role}</p>
-                          <p className="text-sm text-cyan-800">{testimonial.location}</p>
+
+                        {/* Star Rating and Years */}
+                        <div className="flex items-center gap-2 mb-4">
+                          <div className="flex items-center gap-1">
+                            {[...Array(testimonial.rating)].map((_, i) => (
+                              <svg
+                                key={i}
+                                className="h-4 w-4 fill-yellow-400"
+                                viewBox="0 0 20 20"
+                              >
+                                <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z" />
+                              </svg>
+                            ))}
+                          </div>
+                          <span className="text-xs text-gray-500">{testimonial.yearsWithMedplus}</span>
+                        </div>
+
+                        {/* Quote */}
+                        <p className="text-gray-700 text-sm leading-relaxed mb-4 relative z-10">
+                          "{testimonial.quote}"
+                        </p>
+
+                        {/* Achievement Badge */}
+                        <div className="flex items-center gap-2 pt-3 border-t border-gray-100">
+                          <div className="flex items-center gap-2 text-cyan-700 bg-cyan-50 px-3 py-1.5 rounded-md">
+                            <TrendingUp className="h-4 w-4" />
+                            <span className="text-xs font-medium">{testimonial.achievement}</span>
+                          </div>
+                          <CheckCircle2 className="h-4 w-4 text-green-600 ml-auto" />
                         </div>
                       </div>
                     ))}
