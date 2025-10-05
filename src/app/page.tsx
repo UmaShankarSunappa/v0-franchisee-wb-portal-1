@@ -66,51 +66,51 @@ export default function LandingPage() {
   };
 
   const testimonials = [
-    {
-      name: "Dr. Rajesh Kumar",
-      initials: "DRK",
-      role: "Franchisee Owner",
-      city: "Bangalore, Karnataka",
-      store: "Medplus Koramangala",
-      yearsWithMedplus: "5 years with Medplus",
-      quote: "Partnering with Medplus has been the best decision for my pharmacy business. The brand recognition and supply chain efficiency have helped me grow 40% year-over-year. The technology support and training programs are exceptional.",
-      rating: 5,
-      achievement: "40% YoY Growth"
-    },
-    {
-      name: "Mrs. Priya Sharma",
-      initials: "MPS",
-      role: "Franchisee Owner",
-      city: "Hyderabad, Telangana",
-      store: "Medplus Banjara Hills",
-      yearsWithMedplus: "3 years with Medplus",
-      quote: "I converted my existing medical shop to a Medplus franchise three years ago, and it transformed my business completely. The operational support and marketing materials have made a huge difference. My customers trust the Medplus brand.",
-      rating: 5,
-      achievement: "3x Revenue Increase"
-    },
-    {
-      name: "Mr. Anil Patel",
-      initials: "MAP",
-      role: "Franchisee Owner",
-      city: "Mumbai, Maharashtra",
-      store: "Medplus Andheri West",
-      yearsWithMedplus: "7 years with Medplus",
-      quote: "As one of the early franchisees, I've witnessed Medplus's incredible growth journey. The continuous innovation in technology and the dedicated support team make operations seamless. Proud to be part of this healthcare revolution.",
-      rating: 5,
-      achievement: "7 Years of Success"
-    },
-    {
-      name: "Dr. Meena Reddy",
-      initials: "DMR",
-      role: "Franchisee Owner",
-      city: "Chennai, Tamil Nadu",
-      store: "Medplus T Nagar",
-      yearsWithMedplus: "4 years with Medplus",
-      quote: "The comprehensive training and ongoing support from Medplus have been invaluable. From inventory management to customer service, every aspect is well-structured. My store has become a trusted healthcare destination in the community.",
-      rating: 5,
-      achievement: "500+ Daily Customers"
-    }
-  ];
+  {
+    name: "Dr. Rajesh Kumar",
+    initials: "DRK",
+    role: "Franchisee Owner",
+    city: "Bangalore, Karnataka",
+    store: "Medplus Koramangala",
+    yearsWithMedplus: "1 year with Medplus",
+    quote: "Partnering with Medplus has been the best decision for my pharmacy business. The brand recognition and supply chain efficiency have helped me grow 40% year-over-year. The technology support and training programs are exceptional.",
+    rating: 5,
+    achievement: "40% YoY Growth"
+  },
+  {
+    name: "Mrs. Priya Sharma",
+    initials: "MPS",
+    role: "Franchisee Owner",
+    city: "Hyderabad, Telangana",
+    store: "Medplus Banjara Hills",
+    yearsWithMedplus: "2 years with Medplus",
+    quote: "I converted my existing medical shop to a Medplus franchise three years ago, and it transformed my business completely. The operational support and marketing materials have made a huge difference. My customers trust the Medplus brand.",
+    rating: 5,
+    achievement: "3x Revenue Increase"
+  },
+  {
+    name: "Mr. Anil Patel",
+    initials: "MAP",
+    role: "Franchisee Owner",
+    city: "Mumbai, Maharashtra",
+    store: "Medplus Andheri West",
+    yearsWithMedplus: "7 years with Medplus",
+    quote: "As one of the early franchisees, I've witnessed Medplus's incredible growth journey. The continuous innovation in technology and the dedicated support team make operations seamless. Proud to be part of this healthcare revolution.",
+    rating: 5,
+    achievement: "7 Years of Success"
+  },
+  {
+    name: "Dr. Meena Reddy",
+    initials: "DMR",
+    role: "Franchisee Owner",
+    city: "Chennai, Tamil Nadu",
+    store: "Medplus T Nagar",
+    yearsWithMedplus: "4 years with Medplus",
+    quote: "The comprehensive training and ongoing support from Medplus have been invaluable. From inventory management to customer service, every aspect is well-structured. My store has become a trusted healthcare destination in the community.",
+    rating: 5,
+    achievement: "500+ Daily Customers"
+  }];
+
 
   const newsUpdates = [
   {
@@ -139,47 +139,47 @@ export default function LandingPage() {
   {
     category: "Franchisee Onboarding & Setup (Expanded)",
     questions: [
-      {
-        q: "What documents are required before signing the franchise agreement?",
-        a: "You will need to submit KYC documents (PAN, Aadhaar, GST Registration, Shop & Establishment License, and Drug License for pharmacy operations)."
-      },
-      {
-        q: "What is the minimum investment required to start a MedPlus franchise?",
-        a: "Approx. ₹15–20 Lakhs depending on store size, location, and inventory requirements (figures vary regionally; confirm with Franchisee Business Development team)."
-      },
-      {
-        q: "How much space is required to open a MedPlus store?",
-        a: "Minimum 300–400 sq. ft. with proper storage area, air conditioning, and accessibility for customers."
-      },
-      {
-        q: "Who is responsible for interior design and branding setup of the store?",
-        a: "MedPlus provides standard branding guidelines and approved vendors. Franchisees must ensure the setup matches company specifications before launch."
-      },
-      {
-        q: "Is pharmacy staff recruitment handled by the company or franchisee?",
-        a: "Franchisees are responsible for hiring qualified staff (at least one registered pharmacist). MedPlus may assist with training and certification."
-      },
-      {
-        q: "Is training provided for me and my staff before store launch?",
-        a: "Yes, MedPlus conducts mandatory training sessions covering POS usage, billing, inventory management, customer service, and compliance."
-      },
-      {
-        q: "What IT infrastructure is required in my store?",
-        a: "A computer system compatible with MedPlus POS, a barcode scanner, receipt printer, internet connectivity, and backup power supply."
-      },
-      {
-        q: "Does MedPlus help in obtaining the necessary drug licenses?",
-        a: "Franchisees must apply for licenses, but MedPlus provides guidance and required documentation support."
-      },
-      {
-        q: "How soon after store setup will I start receiving inventory?",
-        a: "Once store readiness and compliance checks are completed, the first stock dispatch happens within 7–10 working days."
-      },
-      {
-        q: "What initial marketing support will I receive for my store launch?",
-        a: "MedPlus provides launch kits — including banners, posters, flyers, and digital campaigns — to help promote your store in the local area."
-      }
-    ]
+    {
+      q: "What documents are required before signing the franchise agreement?",
+      a: "You will need to submit KYC documents (PAN, Aadhaar, GST Registration, Shop & Establishment License, and Drug License for pharmacy operations)."
+    },
+    {
+      q: "What is the minimum investment required to start a MedPlus franchise?",
+      a: "Approx. ₹15–20 Lakhs depending on store size, location, and inventory requirements (figures vary regionally; confirm with Franchisee Business Development team)."
+    },
+    {
+      q: "How much space is required to open a MedPlus store?",
+      a: "Minimum 300–400 sq. ft. with proper storage area, air conditioning, and accessibility for customers."
+    },
+    {
+      q: "Who is responsible for interior design and branding setup of the store?",
+      a: "MedPlus provides standard branding guidelines and approved vendors. Franchisees must ensure the setup matches company specifications before launch."
+    },
+    {
+      q: "Is pharmacy staff recruitment handled by the company or franchisee?",
+      a: "Franchisees are responsible for hiring qualified staff (at least one registered pharmacist). MedPlus may assist with training and certification."
+    },
+    {
+      q: "Is training provided for me and my staff before store launch?",
+      a: "Yes, MedPlus conducts mandatory training sessions covering POS usage, billing, inventory management, customer service, and compliance."
+    },
+    {
+      q: "What IT infrastructure is required in my store?",
+      a: "A computer system compatible with MedPlus POS, a barcode scanner, receipt printer, internet connectivity, and backup power supply."
+    },
+    {
+      q: "Does MedPlus help in obtaining the necessary drug licenses?",
+      a: "Franchisees must apply for licenses, but MedPlus provides guidance and required documentation support."
+    },
+    {
+      q: "How soon after store setup will I start receiving inventory?",
+      a: "Once store readiness and compliance checks are completed, the first stock dispatch happens within 7–10 working days."
+    },
+    {
+      q: "What initial marketing support will I receive for my store launch?",
+      a: "MedPlus provides launch kits — including banners, posters, flyers, and digital campaigns — to help promote your store in the local area."
+    }]
+
   },
   {
     category: "Technical (POS / EDP / IT)",
@@ -411,12 +411,12 @@ export default function LandingPage() {
                   millions of customers across the nation.
                 </p>
                 <div className="flex flex-wrap gap-4">
-                  <Button 
-                    size="lg" 
-                    variant="secondary" 
-                    onClick={() => setShowEnquiryForm(true)}
-                    className="bg-white text-cyan-800 hover:bg-gray-100"
-                  >
+                  <Button
+                  size="lg"
+                  variant="secondary"
+                  onClick={() => setShowEnquiryForm(true)}
+                  className="bg-white text-cyan-800 hover:bg-gray-100">
+
                     Become a Partner
                   </Button>
                   <Button
@@ -629,11 +629,11 @@ export default function LandingPage() {
                 </CardHeader>
                 <CardContent>
                   <div className="grid gap-6 md:grid-cols-2">
-                    {testimonials.map((testimonial, index) => (
-                      <div
-                        key={index}
-                        className="relative bg-white p-6 rounded-lg border border-gray-200 shadow-sm hover:shadow-md transition-shadow"
-                      >
+                    {testimonials.map((testimonial, index) =>
+                  <div
+                    key={index}
+                    className="relative bg-white p-6 rounded-lg border border-gray-200 shadow-sm hover:shadow-md transition-shadow">
+
                         <Quote className="absolute top-4 right-4 h-12 w-12 text-cyan-300" />
                         
                         {/* Header with Avatar and Info */}
@@ -651,17 +651,17 @@ export default function LandingPage() {
                         {/* Star Rating and Years */}
                         <div className="flex items-center gap-2 mb-4">
                           <div className="flex items-center gap-1">
-                            {[...Array(testimonial.rating)].map((_, i) => (
-                              <svg
-                                key={i}
-                                className="h-4 w-4 fill-yellow-400"
-                                viewBox="0 0 20 20"
-                              >
+                            {[...Array(testimonial.rating)].map((_, i) =>
+                        <svg
+                          key={i}
+                          className="h-4 w-4 fill-yellow-400"
+                          viewBox="0 0 20 20">
+
                                 <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z" />
                               </svg>
-                            ))}
+                        )}
                           </div>
-                          <span className="text-xs text-gray-500">{testimonial.yearsWithMedplus}</span>
+                          <span className="text-xs text-gray-500 !whitespace-pre-line">{testimonial.yearsWithMedplus}</span>
                         </div>
 
                         {/* Quote */}
@@ -678,7 +678,7 @@ export default function LandingPage() {
                           <CheckCircle2 className="h-4 w-4 text-green-600 ml-auto" />
                         </div>
                       </div>
-                    ))}
+                  )}
                   </div>
                 </CardContent>
               </Card>
@@ -984,8 +984,8 @@ export default function LandingPage() {
                   value={formData.fullName}
                   onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
                   placeholder="Enter your full name"
-                  className="border-gray-300"
-                />
+                  className="border-gray-300" />
+
               </div>
 
               {/* Mobile Number */}
@@ -1000,8 +1000,8 @@ export default function LandingPage() {
                   value={formData.mobile}
                   onChange={(e) => setFormData({ ...formData, mobile: e.target.value })}
                   placeholder="Enter your mobile number"
-                  className="border-gray-300"
-                />
+                  className="border-gray-300" />
+
               </div>
 
               {/* Email Address */}
@@ -1015,8 +1015,8 @@ export default function LandingPage() {
                   value={formData.email}
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                   placeholder="Enter your email address"
-                  className="border-gray-300"
-                />
+                  className="border-gray-300" />
+
               </div>
 
               {/* City */}
@@ -1030,8 +1030,8 @@ export default function LandingPage() {
                   value={formData.city}
                   onChange={(e) => setFormData({ ...formData, city: e.target.value })}
                   placeholder="Enter your city"
-                  className="border-gray-300"
-                />
+                  className="border-gray-300" />
+
               </div>
 
               {/* State */}
@@ -1045,8 +1045,8 @@ export default function LandingPage() {
                   value={formData.state}
                   onChange={(e) => setFormData({ ...formData, state: e.target.value })}
                   placeholder="Enter your state"
-                  className="border-gray-300"
-                />
+                  className="border-gray-300" />
+
               </div>
 
               {/* Pincode */}
@@ -1060,8 +1060,8 @@ export default function LandingPage() {
                   value={formData.pincode}
                   onChange={(e) => setFormData({ ...formData, pincode: e.target.value })}
                   placeholder="Enter your pincode"
-                  className="border-gray-300"
-                />
+                  className="border-gray-300" />
+
               </div>
             </div>
 
@@ -1073,8 +1073,8 @@ export default function LandingPage() {
               <Select
                 required
                 value={formData.interest}
-                onValueChange={(value) => setFormData({ ...formData, interest: value })}
-              >
+                onValueChange={(value) => setFormData({ ...formData, interest: value })}>
+
                 <SelectTrigger className="border-gray-300">
                   <SelectValue placeholder="Select your area of interest" />
                 </SelectTrigger>
@@ -1093,14 +1093,14 @@ export default function LandingPage() {
                 type="button"
                 variant="outline"
                 onClick={() => setShowEnquiryForm(false)}
-                className="flex-1 border-gray-300"
-              >
+                className="flex-1 border-gray-300">
+
                 Cancel
               </Button>
               <Button
                 type="submit"
-                className="flex-1 bg-cyan-800 hover:bg-cyan-900"
-              >
+                className="flex-1 bg-cyan-800 hover:bg-cyan-900">
+
                 Submit Enquiry
               </Button>
             </div>
