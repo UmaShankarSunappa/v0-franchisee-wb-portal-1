@@ -1,6 +1,7 @@
 "use client"
 
 import Link from "next/link"
+import Image from "next/image"
 import { usePathname } from "next/navigation"
 import { cn } from "@/lib/utils"
 import {
@@ -41,8 +42,14 @@ export function SidebarContent({ onLinkClick }: SidebarContentProps) {
   return (
     <div className="flex grow flex-col gap-y-5 overflow-y-auto bg-white px-6 pb-4">
       <div className="flex h-16 shrink-0 items-center gap-3">
-        <div className="h-10 w-10 rounded-lg bg-cyan-800 flex items-center justify-center">
-          <span className="text-xl font-bold text-white">M</span>
+        <div className="h-10 w-10 rounded-lg overflow-hidden flex items-center justify-center bg-white">
+          <Image 
+            src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/document-uploads/image-1759660819624.png"
+            alt="Medplus Logo"
+            width={40}
+            height={40}
+            className="object-contain"
+          />
         </div>
         <span className="text-xl font-bold text-cyan-900">Medplus</span>
       </div>
