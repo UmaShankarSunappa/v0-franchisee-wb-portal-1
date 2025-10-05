@@ -137,7 +137,7 @@ export default function LandingPage() {
 
   const faqs = [
   {
-    category: "Franchisee Onboarding & Setup (Expanded)",
+    category: "Franchisee Onboarding & Setup",
     questions: [
     {
       q: "What documents are required before signing the franchise agreement?",
@@ -790,7 +790,7 @@ export default function LandingPage() {
               <Accordion type="single" collapsible className="w-full">
                     {filteredFaqs.map((category, catIndex) =>
                 <div key={catIndex} className="mb-6">
-                        <h3 className="text-lg font-semibold text-cyan-800 mb-3">{category.category}</h3>
+                        <h3 className="text-lg font-semibold text-cyan-800 mb-3 !whitespace-pre-line">{category.category}</h3>
                         {category.questions.map((faq, faqIndex) =>
                   <AccordionItem key={`${catIndex}-${faqIndex}`} value={`${catIndex}-${faqIndex}`}>
                             <AccordionTrigger className="text-left">{faq.q}</AccordionTrigger>
