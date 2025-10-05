@@ -97,7 +97,7 @@ export default function LandingPage() {
     yearsWithMedplus: "1 year with Medplus",
     quote: "As one of the early franchisees, I've witnessed Medplus's incredible growth journey. The continuous innovation in technology and the dedicated support team make operations seamless. Proud to be part of this healthcare revolution.",
     rating: 5,
-    achievement: "7 Years of Success"
+    achievement: "4x Footfalls"
   },
   {
     name: "Dr. Meena Reddy",
@@ -673,7 +673,7 @@ export default function LandingPage() {
                         <div className="flex items-center gap-2 pt-3 border-t border-gray-100">
                           <div className="flex items-center gap-2 text-cyan-700 bg-cyan-50 px-3 py-1.5 rounded-md">
                             <TrendingUp className="h-4 w-4" />
-                            <span className="text-xs font-medium !whitespace-pre-line">{testimonial.achievement}</span>
+                            <span className="text-xs font-medium !whitespace-pre-line !whitespace-pre-line">{testimonial.achievement}</span>
                           </div>
                           <CheckCircle2 className="h-4 w-4 text-green-600 ml-auto" />
                         </div>
