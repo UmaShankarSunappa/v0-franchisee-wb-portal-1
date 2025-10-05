@@ -75,7 +75,7 @@ export default function LandingPage() {
     yearsWithMedplus: "1 year with Medplus",
     quote: "Partnering with Medplus has been the best decision for my pharmacy business. The brand recognition and supply chain efficiency have helped me grow 40% year-over-year. The technology support and training programs are exceptional.",
     rating: 5,
-    achievement: "40% YoY Growth"
+    achievement: "10% MOM Growth"
   },
   {
     name: "Mrs. Priya Sharma",
@@ -673,7 +673,7 @@ export default function LandingPage() {
                         <div className="flex items-center gap-2 pt-3 border-t border-gray-100">
                           <div className="flex items-center gap-2 text-cyan-700 bg-cyan-50 px-3 py-1.5 rounded-md">
                             <TrendingUp className="h-4 w-4" />
-                            <span className="text-xs font-medium">{testimonial.achievement}</span>
+                            <span className="text-xs font-medium !whitespace-pre-line">{testimonial.achievement}</span>
                           </div>
                           <CheckCircle2 className="h-4 w-4 text-green-600 ml-auto" />
                         </div>
