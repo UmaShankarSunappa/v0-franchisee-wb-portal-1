@@ -332,8 +332,8 @@ export default function LandingPage() {
               className={`text-xs sm:text-sm px-2 sm:px-4 ${
               activeSection === "home" ?
               "bg-cyan-800 hover:bg-cyan-900" :
-              "text-cyan-800 hover:text-cyan-900 hover:bg-cyan-50"
-              }`}>
+              "text-cyan-800 hover:text-cyan-900 hover:bg-cyan-50"}`
+              }>
               Home
             </Button>
             <Button
@@ -342,8 +342,8 @@ export default function LandingPage() {
               className={`text-xs sm:text-sm px-2 sm:px-4 ${
               activeSection === "about" ?
               "bg-cyan-800 hover:bg-cyan-900" :
-              "text-cyan-800 hover:text-cyan-900 hover:bg-cyan-50"
-              }`}>
+              "text-cyan-800 hover:text-cyan-900 hover:bg-cyan-50"}`
+              }>
               About Us
             </Button>
             <Button
@@ -352,8 +352,8 @@ export default function LandingPage() {
               className={`text-xs sm:text-sm px-2 sm:px-4 ${
               activeSection === "news" ?
               "bg-cyan-800 hover:bg-cyan-900" :
-              "text-cyan-800 hover:text-cyan-900 hover:bg-cyan-50"
-              }`}>
+              "text-cyan-800 hover:text-cyan-900 hover:bg-cyan-50"}`
+              }>
               News
             </Button>
             <Button
@@ -362,8 +362,8 @@ export default function LandingPage() {
               className={`text-xs sm:text-sm px-2 sm:px-4 ${
               activeSection === "faqs" ?
               "bg-cyan-800 hover:bg-cyan-900" :
-              "text-cyan-800 hover:text-cyan-900 hover:bg-cyan-50"
-              }`}>
+              "text-cyan-800 hover:text-cyan-900 hover:bg-cyan-50"}`
+              }>
               FAQs
             </Button>
             <Button
@@ -372,8 +372,8 @@ export default function LandingPage() {
               className={`text-xs sm:text-sm px-2 sm:px-4 ${
               activeSection === "resources" ?
               "bg-cyan-800 hover:bg-cyan-900" :
-              "text-cyan-800 hover:text-cyan-900 hover:bg-cyan-50"
-              }`}>
+              "text-cyan-800 hover:text-cyan-900 hover:bg-cyan-50"}`
+              }>
               Resources
             </Button>
             <Button
@@ -382,8 +382,8 @@ export default function LandingPage() {
               className={`text-xs sm:text-sm px-2 sm:px-4 ${
               activeSection === "contact" ?
               "bg-cyan-800 hover:bg-cyan-900" :
-              "text-cyan-800 hover:text-cyan-900 hover:bg-cyan-50"
-              }`}>
+              "text-cyan-800 hover:text-cyan-900 hover:bg-cyan-50"}`
+              }>
               Contact
             </Button>
           </nav>
@@ -918,7 +918,7 @@ export default function LandingPage() {
                         <Clock className="h-5 w-5 text-cyan-800 mt-0.5" />
                         <div>
                           <p className="font-medium text-gray-900">Hours of Operation</p>
-                          <p className="text-gray-700">Monday – Friday, 9:30 AM – 5:30 PM IST</p>
+                          <p className="text-gray-700 !whitespace-pre-line">Monday – Friday, 10:00 AM – 7:00 PM IST</p>
                         </div>
                       </div>
                     </div>
