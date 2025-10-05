@@ -297,27 +297,26 @@ export default function LandingPage() {
     <div className="min-h-screen bg-gradient-to-br from-cyan-50 via-white to-blue-50">
       {/* Header with Auth Buttons */}
       <header className="border-b bg-white/80 backdrop-blur-sm sticky top-0 z-50">
-        <div className="container mx-auto px-4 py-4 flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <div className="h-10 w-10 rounded-lg overflow-hidden flex items-center justify-center bg-white">
+        <div className="container mx-auto px-4 py-4 flex items-center justify-between gap-3">
+          <div className="flex items-center gap-2 sm:gap-3">
+            <div className="h-8 w-8 sm:h-10 sm:w-10 rounded-lg overflow-hidden flex items-center justify-center bg-white">
               <Image
                 src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/document-uploads/image-1759653074644.png"
                 alt="MedPlus Logo"
                 width={40}
                 height={40}
                 className="object-contain !w-full !h-full !max-w-full" />
-
             </div>
-            <div>
-              <h1 className="text-xl font-bold text-cyan-900 !whitespace-pre-line !w-full !h-[30px]">Medplus Franchisee</h1>
-              <p className="text-xs text-gray-600 !w-[151px] !h-5 !whitespace-pre-line">Franchiee Portal</p>
+            <div className="min-w-0">
+              <h1 className="text-base sm:text-xl font-bold text-cyan-900 truncate">Medplus Franchisee</h1>
+              <p className="text-[10px] sm:text-xs text-gray-600 truncate">Franchisee Portal</p>
             </div>
           </div>
-          <div className="flex gap-3">
-            <Button variant="outline" asChild className="border-cyan-800 text-cyan-800 hover:bg-cyan-50 bg-transparent">
+          <div className="flex gap-2 sm:gap-3 flex-shrink-0">
+            <Button variant="outline" asChild className="border-cyan-800 text-cyan-800 hover:bg-cyan-50 bg-transparent text-xs sm:text-sm px-3 sm:px-4">
               <Link href="/login">Sign In</Link>
             </Button>
-            <Button asChild className="bg-cyan-800 hover:bg-cyan-900">
+            <Button asChild className="bg-cyan-800 hover:bg-cyan-900 text-xs sm:text-sm px-3 sm:px-4">
               <Link href="/signup">Sign Up</Link>
             </Button>
           </div>
@@ -326,110 +325,100 @@ export default function LandingPage() {
 
       <div className="bg-white border-b sticky top-[73px] z-40">
         <div className="container mx-auto px-4 py-3">
-          <nav className="flex flex-wrap gap-2 justify-center">
+          <nav className="flex flex-wrap gap-1 sm:gap-2 justify-center">
             <Button
               variant={activeSection === "home" ? "default" : "ghost"}
               onClick={() => setActiveSection("home")}
-              className={
+              className={`text-xs sm:text-sm px-2 sm:px-4 ${
               activeSection === "home" ?
               "bg-cyan-800 hover:bg-cyan-900" :
               "text-cyan-800 hover:text-cyan-900 hover:bg-cyan-50"
-              }>
-
+              }`}>
               Home
             </Button>
             <Button
               variant={activeSection === "about" ? "default" : "ghost"}
               onClick={() => setActiveSection("about")}
-              className={
+              className={`text-xs sm:text-sm px-2 sm:px-4 ${
               activeSection === "about" ?
               "bg-cyan-800 hover:bg-cyan-900" :
               "text-cyan-800 hover:text-cyan-900 hover:bg-cyan-50"
-              }>
-
+              }`}>
               About Us
             </Button>
             <Button
               variant={activeSection === "news" ? "default" : "ghost"}
               onClick={() => setActiveSection("news")}
-              className={
+              className={`text-xs sm:text-sm px-2 sm:px-4 ${
               activeSection === "news" ?
               "bg-cyan-800 hover:bg-cyan-900" :
               "text-cyan-800 hover:text-cyan-900 hover:bg-cyan-50"
-              }>
-
-              News & Updates
+              }`}>
+              News
             </Button>
             <Button
               variant={activeSection === "faqs" ? "default" : "ghost"}
               onClick={() => setActiveSection("faqs")}
-              className={
+              className={`text-xs sm:text-sm px-2 sm:px-4 ${
               activeSection === "faqs" ?
               "bg-cyan-800 hover:bg-cyan-900" :
               "text-cyan-800 hover:text-cyan-900 hover:bg-cyan-50"
-              }>
-
+              }`}>
               FAQs
             </Button>
             <Button
               variant={activeSection === "resources" ? "default" : "ghost"}
               onClick={() => setActiveSection("resources")}
-              className={
+              className={`text-xs sm:text-sm px-2 sm:px-4 ${
               activeSection === "resources" ?
               "bg-cyan-800 hover:bg-cyan-900" :
               "text-cyan-800 hover:text-cyan-900 hover:bg-cyan-50"
-              }>
-
-              Resources & Training
+              }`}>
+              Resources
             </Button>
             <Button
               variant={activeSection === "contact" ? "default" : "ghost"}
               onClick={() => setActiveSection("contact")}
-              className={
+              className={`text-xs sm:text-sm px-2 sm:px-4 ${
               activeSection === "contact" ?
               "bg-cyan-800 hover:bg-cyan-900" :
               "text-cyan-800 hover:text-cyan-900 hover:bg-cyan-50"
-              }>
-
-              Contact Us
+              }`}>
+              Contact
             </Button>
           </nav>
         </div>
       </div>
 
-      <div className="container mx-auto px-4 py-8 space-y-8">
+      <div className="container mx-auto px-4 py-6 sm:py-8 space-y-6 sm:space-y-8">
         {activeSection === "home" &&
         <>
             {/* Welcome Banner */}
-            <section className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-cyan-800 to-cyan-600 text-white p-12 md:p-16">
+            <section className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-cyan-800 to-cyan-600 text-white p-6 sm:p-12 md:p-16">
               <div className="relative z-10 max-w-3xl">
-                <h2 className="text-4xl md:text-5xl font-bold mb-4 text-balance !whitespace-pre-line">Welcome to Medplus Franchisee 
-
-              </h2>
-                <p className="text-xl text-cyan-50 mb-8 text-pretty leading-relaxed">
+                <h2 className="text-2xl sm:text-4xl md:text-5xl font-bold mb-3 sm:mb-4 leading-tight">Welcome to Medplus Franchisee</h2>
+                <p className="text-sm sm:text-xl text-cyan-50 mb-6 sm:mb-8 leading-relaxed">
                   Join India's leading pharmacy retail chain and be part of a trusted healthcare network serving
                   millions of customers across the nation.
                 </p>
-                <div className="flex flex-wrap gap-4">
+                <div className="flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4">
                   <Button
                   size="lg"
                   variant="secondary"
                   onClick={() => setShowEnquiryForm(true)}
-                  className="bg-white text-cyan-800 hover:bg-gray-100">
-
+                  className="bg-white text-cyan-800 hover:bg-gray-100 w-full sm:w-auto text-sm sm:text-base">
                     Become a Partner
                   </Button>
                   <Button
                   size="lg"
                   variant="outline"
                   asChild
-                  className="border-white text-white hover:bg-white/10 bg-transparent">
-
+                  className="border-white text-white hover:bg-white/10 bg-transparent w-full sm:w-auto text-sm sm:text-base">
                     <Link href="/login">Existing Partner Login</Link>
                   </Button>
                 </div>
               </div>
-              <div className="absolute right-0 top-0 h-full w-1/3 opacity-10">
+              <div className="absolute right-0 top-0 h-full w-1/3 opacity-10 hidden md:block">
                 <div className="h-full w-full bg-[url('/abstract-medical-pattern.png')] bg-cover bg-center" />
               </div>
             </section>
@@ -438,44 +427,44 @@ export default function LandingPage() {
             <section>
               <Card>
                 <CardHeader>
-                  <CardTitle className="text-2xl text-cyan-900">Why Partner with Medplus?</CardTitle>
-                  <CardDescription>Key benefits of becoming a franchisee</CardDescription>
+                  <CardTitle className="text-xl sm:text-2xl text-cyan-900">Why Partner with Medplus?</CardTitle>
+                  <CardDescription className="text-sm">Key benefits of becoming a franchisee</CardDescription>
                 </CardHeader>
                 <CardContent>
-                  <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-                    <div className="flex flex-col items-center text-center p-4">
-                      <div className="h-16 w-16 rounded-full bg-cyan-100 flex items-center justify-center mb-4">
-                        <Building2 className="h-8 w-8 text-cyan-800" />
+                  <div className="grid gap-4 sm:gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
+                    <div className="flex flex-col items-center text-center p-3 sm:p-4">
+                      <div className="h-12 w-12 sm:h-16 sm:w-16 rounded-full bg-cyan-100 flex items-center justify-center mb-3 sm:mb-4">
+                        <Building2 className="h-6 w-6 sm:h-8 sm:w-8 text-cyan-800" />
                       </div>
-                      <h3 className="font-semibold text-cyan-900 mb-2">Brand Recognition</h3>
-                      <p className="text-sm text-gray-600 text-pretty">
+                      <h3 className="font-semibold text-cyan-900 mb-2 text-sm sm:text-base">Brand Recognition</h3>
+                      <p className="text-xs sm:text-sm text-gray-600 text-pretty">
                         Leverage the trust of India's leading pharmacy chain with 4,230+ stores
                       </p>
                     </div>
-                    <div className="flex flex-col items-center text-center p-4">
-                      <div className="h-16 w-16 rounded-full bg-cyan-100 flex items-center justify-center mb-4">
-                        <TrendingUp className="h-8 w-8 text-cyan-800" />
+                    <div className="flex flex-col items-center text-center p-3 sm:p-4">
+                      <div className="h-12 w-12 sm:h-16 sm:w-16 rounded-full bg-cyan-100 flex items-center justify-center mb-3 sm:mb-4">
+                        <TrendingUp className="h-6 w-6 sm:h-8 sm:w-8 text-cyan-800" />
                       </div>
-                      <h3 className="font-semibold text-cyan-900 mb-2">Supply Chain Efficiency</h3>
-                      <p className="text-sm text-gray-600 text-pretty">
+                      <h3 className="font-semibold text-cyan-900 mb-2 text-sm sm:text-base">Supply Chain Efficiency</h3>
+                      <p className="text-xs sm:text-sm text-gray-600 text-pretty">
                         Access to centralized procurement and efficient distribution network
                       </p>
                     </div>
-                    <div className="flex flex-col items-center text-center p-4">
-                      <div className="h-16 w-16 rounded-full bg-cyan-100 flex items-center justify-center mb-4">
-                        <Users className="h-8 w-8 text-cyan-800" />
+                    <div className="flex flex-col items-center text-center p-3 sm:p-4">
+                      <div className="h-12 w-12 sm:h-16 sm:w-16 rounded-full bg-cyan-100 flex items-center justify-center mb-3 sm:mb-4">
+                        <Users className="h-6 w-6 sm:h-8 sm:w-8 text-cyan-800" />
                       </div>
-                      <h3 className="font-semibold text-cyan-900 mb-2">Technology Support</h3>
-                      <p className="text-sm text-gray-600 text-pretty">
+                      <h3 className="font-semibold text-cyan-900 mb-2 text-sm sm:text-base">Technology Support</h3>
+                      <p className="text-xs sm:text-sm text-gray-600 text-pretty">
                         Modern POS systems, inventory management, and digital tools
                       </p>
                     </div>
-                    <div className="flex flex-col items-center text-center p-4">
-                      <div className="h-16 w-16 rounded-full bg-cyan-100 flex items-center justify-center mb-4">
-                        <Headset className="h-8 w-8 text-cyan-800" />
+                    <div className="flex flex-col items-center text-center p-3 sm:p-4">
+                      <div className="h-12 w-12 sm:h-16 sm:w-16 rounded-full bg-cyan-100 flex items-center justify-center mb-3 sm:mb-4">
+                        <Headset className="h-6 w-6 sm:h-8 sm:w-8 text-cyan-800" />
                       </div>
-                      <h3 className="font-semibold text-cyan-900 mb-2">Ongoing Support</h3>
-                      <p className="text-sm text-gray-600 text-pretty">
+                      <h3 className="font-semibold text-cyan-900 mb-2 text-sm sm:text-base">Ongoing Support</h3>
+                      <p className="text-xs sm:text-sm text-gray-600 text-pretty">
                         Comprehensive training, marketing support, and dedicated assistance
                       </p>
                     </div>
