@@ -27,6 +27,9 @@ import Image from "next/image";
 import { Input } from "@/components/ui/input";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Badge } from "@/components/ui/badge";
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import { Label } from "@/components/ui/label";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { useState } from "react";
 
 type Section = "home" | "about" | "news" | "faqs" | "resources" | "contact";
@@ -34,6 +37,33 @@ type Section = "home" | "about" | "news" | "faqs" | "resources" | "contact";
 export default function LandingPage() {
   const [activeSection, setActiveSection] = useState<Section>("home");
   const [searchQuery, setSearchQuery] = useState("");
+  const [showEnquiryForm, setShowEnquiryForm] = useState(false);
+  const [formData, setFormData] = useState({
+    fullName: "",
+    mobile: "",
+    email: "",
+    city: "",
+    state: "",
+    pincode: "",
+    interest: ""
+  });
+
+  const handleSubmitEnquiry = (e: React.FormEvent) => {
+    e.preventDefault();
+    // Handle form submission here
+    console.log("Franchisee Enquiry:", formData);
+    // Reset form and close dialog
+    setFormData({
+      fullName: "",
+      mobile: "",
+      email: "",
+      city: "",
+      state: "",
+      pincode: "",
+      interest: ""
+    });
+    setShowEnquiryForm(false);
+  };
 
   const testimonials = [
     {
@@ -336,8 +366,13 @@ export default function LandingPage() {
                   millions of customers across the nation.
                 </p>
                 <div className="flex flex-wrap gap-4">
-                  <Button size="lg" variant="secondary" asChild className="bg-white text-cyan-800 hover:bg-gray-100">
-                    <Link href="/signup">Become a Partner</Link>
+                  <Button 
+                    size="lg" 
+                    variant="secondary" 
+                    onClick={() => setShowEnquiryForm(true)}
+                    className="bg-white text-cyan-800 hover:bg-gray-100"
+                  >
+                    Become a Partner
                   </Button>
                   <Button
                   size="lg"
@@ -881,6 +916,152 @@ export default function LandingPage() {
           </div>
         </div>
       </footer>
+
+      {/* Franchisee Enquiry Form Dialog */}
+      <Dialog open={showEnquiryForm} onOpenChange={setShowEnquiryForm}>
+        <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto">
+          <DialogHeader>
+            <DialogTitle className="text-2xl text-cyan-900">Franchisee Enquiry Form</DialogTitle>
+            <DialogDescription>
+              Fill out the form below and our team will get back to you shortly.
+            </DialogDescription>
+          </DialogHeader>
+          <form onSubmit={handleSubmitEnquiry} className="space-y-4 mt-4">
+            <div className="grid gap-4 md:grid-cols-2">
+              {/* Full Name */}
+              <div className="space-y-2">
+                <Label htmlFor="fullName" className="text-gray-900">
+                  Full Name <span className="text-red-500">*</span>
+                </Label>
+                <Input
+                  id="fullName"
+                  required
+                  value={formData.fullName}
+                  onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
+                  placeholder="Enter your full name"
+                  className="border-gray-300"
+                />
+              </div>
+
+              {/* Mobile Number */}
+              <div className="space-y-2">
+                <Label htmlFor="mobile" className="text-gray-900">
+                  Mobile Number <span className="text-red-500">*</span>
+                </Label>
+                <Input
+                  id="mobile"
+                  type="tel"
+                  required
+                  value={formData.mobile}
+                  onChange={(e) => setFormData({ ...formData, mobile: e.target.value })}
+                  placeholder="Enter your mobile number"
+                  className="border-gray-300"
+                />
+              </div>
+
+              {/* Email Address */}
+              <div className="space-y-2">
+                <Label htmlFor="email" className="text-gray-900">
+                  Email Address <span className="text-gray-500">(optional)</span>
+                </Label>
+                <Input
+                  id="email"
+                  type="email"
+                  value={formData.email}
+                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                  placeholder="Enter your email address"
+                  className="border-gray-300"
+                />
+              </div>
+
+              {/* City */}
+              <div className="space-y-2">
+                <Label htmlFor="city" className="text-gray-900">
+                  City <span className="text-red-500">*</span>
+                </Label>
+                <Input
+                  id="city"
+                  required
+                  value={formData.city}
+                  onChange={(e) => setFormData({ ...formData, city: e.target.value })}
+                  placeholder="Enter your city"
+                  className="border-gray-300"
+                />
+              </div>
+
+              {/* State */}
+              <div className="space-y-2">
+                <Label htmlFor="state" className="text-gray-900">
+                  State <span className="text-red-500">*</span>
+                </Label>
+                <Input
+                  id="state"
+                  required
+                  value={formData.state}
+                  onChange={(e) => setFormData({ ...formData, state: e.target.value })}
+                  placeholder="Enter your state"
+                  className="border-gray-300"
+                />
+              </div>
+
+              {/* Pincode */}
+              <div className="space-y-2">
+                <Label htmlFor="pincode" className="text-gray-900">
+                  Pincode <span className="text-red-500">*</span>
+                </Label>
+                <Input
+                  id="pincode"
+                  required
+                  value={formData.pincode}
+                  onChange={(e) => setFormData({ ...formData, pincode: e.target.value })}
+                  placeholder="Enter your pincode"
+                  className="border-gray-300"
+                />
+              </div>
+            </div>
+
+            {/* Interest Dropdown */}
+            <div className="space-y-2">
+              <Label htmlFor="interest" className="text-gray-900">
+                Area of Interest <span className="text-red-500">*</span>
+              </Label>
+              <Select
+                required
+                value={formData.interest}
+                onValueChange={(value) => setFormData({ ...formData, interest: value })}
+              >
+                <SelectTrigger className="border-gray-300">
+                  <SelectValue placeholder="Select your area of interest" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="franchisee">Interested in Franchisee</SelectItem>
+                  <SelectItem value="conversion">Interested in converting existing Medical Shop</SelectItem>
+                  <SelectItem value="job">Interested in Job</SelectItem>
+                  <SelectItem value="rent">Interested in Renting a Shop</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
+
+            {/* Submit Button */}
+            <div className="flex gap-3 pt-4">
+              <Button
+                type="button"
+                variant="outline"
+                onClick={() => setShowEnquiryForm(false)}
+                className="flex-1 border-gray-300"
+              >
+                Cancel
+              </Button>
+              <Button
+                type="submit"
+                className="flex-1 bg-cyan-800 hover:bg-cyan-900"
+              >
+                Submit Enquiry
+              </Button>
+            </div>
+          </form>
+        </DialogContent>
+      </Dialog>
     </div>);
 
 }
