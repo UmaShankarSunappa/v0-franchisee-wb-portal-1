@@ -45,7 +45,11 @@ export default function LandingPage() {
     city: "",
     state: "",
     pincode: "",
-    interest: ""
+    interest: "",
+    hasStoreSpace: "",
+    investmentReady: "",
+    businessPlan: "",
+    motivation: ""
   });
 
   const handleSubmitEnquiry = (e: React.FormEvent) => {
@@ -60,7 +64,11 @@ export default function LandingPage() {
       city: "",
       state: "",
       pincode: "",
-      interest: ""
+      interest: "",
+      hasStoreSpace: "",
+      investmentReady: "",
+      businessPlan: "",
+      motivation: ""
     });
     setShowEnquiryForm(false);
   };
@@ -1106,6 +1114,87 @@ export default function LandingPage() {
                   <SelectItem value="conversion">Interested in converting existing Medical Shop</SelectItem>
                   <SelectItem value="job">Interested in Job</SelectItem>
                   <SelectItem value="rent">Interested in Renting a Shop</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
+
+            {/* Store Space Question */}
+            <div className="space-y-2">
+              <Label htmlFor="hasStoreSpace" className="text-gray-900">
+                Do you have a store of &gt; 250 sqft area to open Medplus pharmacy? <span className="text-red-500">*</span>
+              </Label>
+              <Select
+                required
+                value={formData.hasStoreSpace}
+                onValueChange={(value) => setFormData({ ...formData, hasStoreSpace: value })}>
+                <SelectTrigger className="border-gray-300">
+                  <SelectValue placeholder="Choose an option" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="yes">Yes</SelectItem>
+                  <SelectItem value="no">No</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
+
+            {/* Investment Question */}
+            <div className="space-y-2">
+              <Label htmlFor="investmentReady" className="text-gray-900">
+                Are you comfortable to Invest INR 10-15L to start your own pharmacy? <span className="text-red-500">*</span>
+              </Label>
+              <Select
+                required
+                value={formData.investmentReady}
+                onValueChange={(value) => setFormData({ ...formData, investmentReady: value })}>
+                <SelectTrigger className="border-gray-300">
+                  <SelectValue placeholder="Choose an option" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="yes">Yes</SelectItem>
+                  <SelectItem value="no">No</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
+
+            {/* Business Plan Question */}
+            <div className="space-y-2">
+              <Label htmlFor="businessPlan" className="text-gray-900">
+                How are you planning to run the business? <span className="text-red-500">*</span>
+              </Label>
+              <Select
+                required
+                value={formData.businessPlan}
+                onValueChange={(value) => setFormData({ ...formData, businessPlan: value })}>
+                <SelectTrigger className="border-gray-300">
+                  <SelectValue placeholder="Choose an option" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="self">Run it myself</SelectItem>
+                  <SelectItem value="family">With family members</SelectItem>
+                  <SelectItem value="hired">Hire staff to manage</SelectItem>
+                  <SelectItem value="partnership">Partnership</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
+
+            {/* Motivation Question */}
+            <div className="space-y-2">
+              <Label htmlFor="motivation" className="text-gray-900">
+                Why do you want to start Medplus Pharmacy? <span className="text-red-500">*</span>
+              </Label>
+              <Select
+                required
+                value={formData.motivation}
+                onValueChange={(value) => setFormData({ ...formData, motivation: value })}>
+                <SelectTrigger className="border-gray-300">
+                  <SelectValue placeholder="Choose an option" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="business">Business opportunity</SelectItem>
+                  <SelectItem value="healthcare">Passion for healthcare</SelectItem>
+                  <SelectItem value="income">Additional income source</SelectItem>
+                  <SelectItem value="brand">Trust in Medplus brand</SelectItem>
+                  <SelectItem value="growth">Growth potential</SelectItem>
                 </SelectContent>
               </Select>
             </div>
