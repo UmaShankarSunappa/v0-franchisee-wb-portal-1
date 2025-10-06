@@ -10,9 +10,16 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Badge } from "@/components/ui/badge"
-import { Plus, Eye, Filter } from "lucide-react"
+import { Plus, Eye, Filter, XCircle } from "lucide-react"
 import { useToast } from "@/hooks/use-toast"
 import { useRouter } from "next/navigation"
+
+interface ActivityLog {
+  timestamp: string
+  status: string
+  comment?: string
+  updatedBy: string
+}
 
 interface Complaint {
   id: string
@@ -21,6 +28,7 @@ interface Complaint {
   subject: string
   dateRaised: string
   status: string
+  activityLog: ActivityLog[]
 }
 
 const mockComplaints: Complaint[] = [
@@ -31,6 +39,20 @@ const mockComplaints: Complaint[] = [
     subject: "Delayed delivery of order ORD-2024-001",
     dateRaised: "2024-01-15",
     status: "In Progress",
+    activityLog: [
+      {
+        timestamp: "2024-01-15T09:00:00",
+        status: "Open",
+        comment: "Complaint raised by user",
+        updatedBy: "You"
+      },
+      {
+        timestamp: "2024-01-15T14:30:00",
+        status: "In Progress",
+        comment: "We are investigating the delay with the logistics team. Expected resolution within 24 hours.",
+        updatedBy: "Warehouse Team"
+      }
+    ]
   },
   {
     id: "2",
@@ -39,6 +61,26 @@ const mockComplaints: Complaint[] = [
     subject: "Payment not reflected in account",
     dateRaised: "2024-01-18",
     status: "Awaiting Your Response",
+    activityLog: [
+      {
+        timestamp: "2024-01-18T10:15:00",
+        status: "Open",
+        comment: "Complaint raised by user",
+        updatedBy: "You"
+      },
+      {
+        timestamp: "2024-01-18T15:00:00",
+        status: "In Progress",
+        comment: "Reviewing payment records. Could you please provide the transaction reference number?",
+        updatedBy: "Accounts Team"
+      },
+      {
+        timestamp: "2024-01-19T09:00:00",
+        status: "Awaiting Your Response",
+        comment: "We need additional information to proceed with this complaint.",
+        updatedBy: "Accounts Team"
+      }
+    ]
   },
   {
     id: "3",
@@ -47,6 +89,26 @@ const mockComplaints: Complaint[] = [
     subject: "POS system login issue",
     dateRaised: "2024-01-10",
     status: "Closed",
+    activityLog: [
+      {
+        timestamp: "2024-01-10T08:00:00",
+        status: "Open",
+        comment: "Complaint raised by user",
+        updatedBy: "You"
+      },
+      {
+        timestamp: "2024-01-10T10:30:00",
+        status: "In Progress",
+        comment: "IT team is working on resetting your credentials.",
+        updatedBy: "EDP Team"
+      },
+      {
+        timestamp: "2024-01-10T14:00:00",
+        status: "Closed",
+        comment: "Issue resolved. Credentials have been reset and sent to your email. Please try logging in again.",
+        updatedBy: "EDP Team"
+      }
+    ]
   },
 ]
 
@@ -99,6 +161,44 @@ export default function ComplaintsPage() {
     }
   }
 
+  const handleWithdrawComplaint = (complaintId: string) => {
+    const complaint = complaints.find(c => c.id === complaintId)
+    if (!complaint) return
+
+    if (complaint.status === "Closed" || complaint.status === "Withdrawn") {
+      toast({
+        title: "Cannot withdraw",
+        description: "This complaint has already been closed or withdrawn",
+        variant: "destructive",
+      })
+      return
+    }
+
+    // Update complaint status to withdrawn
+    setComplaints(prev => prev.map(c => 
+      c.id === complaintId 
+        ? { 
+            ...c, 
+            status: "Withdrawn",
+            activityLog: [
+              ...c.activityLog,
+              {
+                timestamp: new Date().toISOString(),
+                status: "Withdrawn",
+                comment: "Complaint withdrawn by user",
+                updatedBy: "You"
+              }
+            ]
+          }
+        : c
+    ))
+
+    toast({
+      title: "Complaint withdrawn",
+      description: "Your complaint has been successfully withdrawn",
+    })
+  }
+
   const getStatusColor = (status: string) => {
     switch (status.toLowerCase()) {
       case "open":
@@ -109,6 +209,8 @@ export default function ComplaintsPage() {
         return "bg-orange-100 text-orange-800"
       case "closed":
         return "bg-green-100 text-green-800"
+      case "withdrawn":
+        return "bg-gray-100 text-gray-800"
       default:
         return "bg-gray-100 text-gray-800"
     }
@@ -206,9 +308,19 @@ export default function ComplaintsPage() {
                       </Badge>
                     </TableCell>
                     <TableCell className="text-right">
-                      <Button variant="ghost" size="sm" onClick={() => handleViewComplaint(complaint.id)}>
-                        <Eye className="h-4 w-4" />
-                      </Button>
+                      <div className="flex justify-end gap-2">
+                        <Button variant="ghost" size="sm" onClick={() => handleViewComplaint(complaint.id)}>
+                          <Eye className="h-4 w-4" />
+                        </Button>
+                        <Button 
+                          variant="ghost" 
+                          size="sm" 
+                          onClick={() => handleWithdrawComplaint(complaint.id)}
+                          disabled={complaint.status === "Closed" || complaint.status === "Withdrawn"}
+                        >
+                          <XCircle className="h-4 w-4 text-destructive" />
+                        </Button>
+                      </div>
                     </TableCell>
                   </TableRow>
                 ))}
@@ -218,40 +330,73 @@ export default function ComplaintsPage() {
         </CardContent>
       </Card>
 
-      {/* View Complaint Dialog */}
+      {/* View Complaint Dialog - Activity Timeline */}
       <Dialog open={viewDialogOpen} onOpenChange={setViewDialogOpen}>
-        <DialogContent className="sm:max-w-lg">
+        <DialogContent className="sm:max-w-2xl">
           <DialogHeader>
-            <DialogTitle>Complaint Details</DialogTitle>
-            <DialogDescription>View your complaint information</DialogDescription>
+            <DialogTitle>Activity Timeline</DialogTitle>
+            <DialogDescription>Track the progress of your complaint</DialogDescription>
           </DialogHeader>
           {selectedComplaint && (
-            <div className="space-y-4 py-4">
-              <div className="space-y-2">
-                <Label>Ticket ID</Label>
-                <p className="font-medium">{selectedComplaint.ticketId}</p>
+            <div className="space-y-6 py-4">
+              {/* Complaint Header Info */}
+              <div className="p-4 bg-muted rounded-lg space-y-2">
+                <div className="flex items-center justify-between">
+                  <div>
+                    <p className="font-semibold text-sm text-muted-foreground">Ticket ID</p>
+                    <p className="font-bold text-lg">{selectedComplaint.ticketId}</p>
+                  </div>
+                  <Badge className={getStatusColor(selectedComplaint.status)} variant="secondary">
+                    {selectedComplaint.status}
+                  </Badge>
+                </div>
+                <div>
+                  <p className="font-semibold text-sm text-muted-foreground">Subject</p>
+                  <p className="font-medium">{selectedComplaint.subject}</p>
+                </div>
+                <div className="grid grid-cols-2 gap-4 pt-2">
+                  <div>
+                    <p className="font-semibold text-sm text-muted-foreground">Department</p>
+                    <p>{selectedComplaint.department}</p>
+                  </div>
+                  <div>
+                    <p className="font-semibold text-sm text-muted-foreground">Date Raised</p>
+                    <p>{new Date(selectedComplaint.dateRaised).toLocaleDateString()}</p>
+                  </div>
+                </div>
               </div>
-              
-              <div className="space-y-2">
-                <Label>Department</Label>
-                <p>{selectedComplaint.department}</p>
-              </div>
-              
-              <div className="space-y-2">
-                <Label>Subject</Label>
-                <p>{selectedComplaint.subject}</p>
-              </div>
-              
-              <div className="space-y-2">
-                <Label>Date Raised</Label>
-                <p>{new Date(selectedComplaint.dateRaised).toLocaleDateString()}</p>
-              </div>
-              
-              <div className="space-y-2">
-                <Label>Status</Label>
-                <Badge className={getStatusColor(selectedComplaint.status)} variant="secondary">
-                  {selectedComplaint.status}
-                </Badge>
+
+              {/* Activity Timeline */}
+              <div className="space-y-4">
+                <h3 className="font-semibold text-lg">Activity Log</h3>
+                <div className="relative space-y-4 pl-6 border-l-2 border-muted">
+                  {(selectedComplaint.activityLog || []).map((activity, index) => (
+                    <div key={index} className="relative pb-4">
+                      {/* Timeline dot */}
+                      <div className="absolute -left-[25px] top-1 h-4 w-4 rounded-full bg-cyan-800 border-2 border-background" />
+                      
+                      <div className="space-y-1">
+                        <div className="flex items-center justify-between">
+                          <Badge className={getStatusColor(activity.status)} variant="secondary">
+                            {activity.status}
+                          </Badge>
+                          <span className="text-xs text-muted-foreground">
+                            {new Date(activity.timestamp).toLocaleString()}
+                          </span>
+                        </div>
+                        
+                        {activity.comment && (
+                          <div className="mt-2 p-3 bg-muted rounded-md">
+                            <p className="text-sm">{activity.comment}</p>
+                            <p className="text-xs text-muted-foreground mt-1">
+                              - {activity.updatedBy}
+                            </p>
+                          </div>
+                        )}
+                      </div>
+                    </div>
+                  ))}
+                </div>
               </div>
 
               <div className="flex gap-2 pt-4">
