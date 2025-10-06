@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -10,9 +10,13 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Badge } from "@/components/ui/badge"
-import { Plus, Eye, Filter, XCircle } from "lucide-react"
+import { Calendar } from "@/components/ui/calendar"
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover"
+import { Plus, Eye, Filter, XCircle, CalendarIcon } from "lucide-react"
 import { useToast } from "@/hooks/use-toast"
 import { useRouter } from "next/navigation"
+import { format } from "date-fns"
+import { DateRange } from "react-day-picker"
 
 interface ActivityLog {
   timestamp: string
@@ -121,12 +125,57 @@ export default function ComplaintsPage() {
   const [selectedComplaint, setSelectedComplaint] = useState<Complaint | null>(null)
   const [filterDepartment, setFilterDepartment] = useState("all")
   const [filterStatus, setFilterStatus] = useState("all")
+  
+  // Date range filter - default to last 30 days
+  const [dateRange, setDateRange] = useState<DateRange | undefined>(() => {
+    const to = new Date()
+    const from = new Date()
+    from.setDate(from.getDate() - 30)
+    return { from, to }
+  })
 
   const [complaintForm, setComplaintForm] = useState({
     storeId: "",
     department: "",
     subject: "",
     description: "",
+  })
+
+  // Filter complaints based on all filters
+  const filteredComplaints = complaints.filter((complaint) => {
+    // Department filter
+    if (filterDepartment !== "all" && complaint.department.toLowerCase() !== filterDepartment) {
+      return false
+    }
+    
+    // Status filter
+    if (filterStatus !== "all") {
+      const statusMap: Record<string, string> = {
+        "in-progress": "in progress",
+        "awaiting": "awaiting your response"
+      }
+      const mappedStatus = statusMap[filterStatus] || filterStatus
+      if (complaint.status.toLowerCase() !== mappedStatus) {
+        return false
+      }
+    }
+    
+    // Date range filter
+    if (dateRange?.from || dateRange?.to) {
+      const complaintDate = new Date(complaint.dateRaised)
+      if (dateRange.from && complaintDate < dateRange.from) {
+        return false
+      }
+      if (dateRange.to) {
+        const toEndOfDay = new Date(dateRange.to)
+        toEndOfDay.setHours(23, 59, 59, 999)
+        if (complaintDate > toEndOfDay) {
+          return false
+        }
+      }
+    }
+    
+    return true
   })
 
   const handleCreateComplaint = () => {
@@ -238,7 +287,7 @@ export default function ComplaintsPage() {
           </CardTitle>
         </CardHeader>
         <CardContent>
-          <div className="grid gap-4 md:grid-cols-2">
+          <div className="grid gap-4 md:grid-cols-3">
             <div className="space-y-2">
               <Label htmlFor="filterDepartment">Department</Label>
               <Select value={filterDepartment} onValueChange={setFilterDepartment}>
@@ -272,6 +321,40 @@ export default function ComplaintsPage() {
                 </SelectContent>
               </Select>
             </div>
+            <div className="space-y-2">
+              <Label>Date Range</Label>
+              <Popover>
+                <PopoverTrigger asChild>
+                  <Button
+                    variant="outline"
+                    className="w-full justify-start text-left font-normal"
+                  >
+                    <CalendarIcon className="mr-2 h-4 w-4" />
+                    {dateRange?.from ? (
+                      dateRange.to ? (
+                        <>
+                          {format(dateRange.from, "MMM dd, yyyy")} -{" "}
+                          {format(dateRange.to, "MMM dd, yyyy")}
+                        </>
+                      ) : (
+                        format(dateRange.from, "MMM dd, yyyy")
+                      )
+                    ) : (
+                      <span>Pick a date range</span>
+                    )}
+                  </Button>
+                </PopoverTrigger>
+                <PopoverContent className="w-auto p-0" align="start">
+                  <Calendar
+                    mode="range"
+                    defaultMonth={dateRange?.from}
+                    selected={dateRange}
+                    onSelect={setDateRange}
+                    numberOfMonths={2}
+                  />
+                </PopoverContent>
+              </Popover>
+            </div>
           </div>
         </CardContent>
       </Card>
@@ -280,7 +363,9 @@ export default function ComplaintsPage() {
       <Card>
         <CardHeader>
           <CardTitle className="text-cyan-900">Your Complaints</CardTitle>
-          <CardDescription>All submitted tickets and their current status</CardDescription>
+          <CardDescription>
+            Showing {filteredComplaints.length} of {complaints.length} complaints
+          </CardDescription>
         </CardHeader>
         <CardContent>
           <div className="overflow-x-auto">
@@ -296,7 +381,7 @@ export default function ComplaintsPage() {
                 </TableRow>
               </TableHeader>
               <TableBody>
-                {complaints.map((complaint) => (
+                {filteredComplaints.map((complaint) => (
                   <TableRow key={complaint.id}>
                     <TableCell className="font-medium">{complaint.ticketId}</TableCell>
                     <TableCell>{complaint.department}</TableCell>
