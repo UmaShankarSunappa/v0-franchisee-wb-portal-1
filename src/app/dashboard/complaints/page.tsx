@@ -55,6 +55,8 @@ export default function ComplaintsPage() {
   const router = useRouter()
   const [complaints, setComplaints] = useState<Complaint[]>(mockComplaints)
   const [createDialogOpen, setCreateDialogOpen] = useState(false)
+  const [viewDialogOpen, setViewDialogOpen] = useState(false)
+  const [selectedComplaint, setSelectedComplaint] = useState<Complaint | null>(null)
   const [filterDepartment, setFilterDepartment] = useState("all")
   const [filterStatus, setFilterStatus] = useState("all")
 
@@ -89,8 +91,12 @@ export default function ComplaintsPage() {
     })
   }
 
-  const handleViewComplaint = (ticketId: string) => {
-    router.push(`/dashboard/complaints/${ticketId}`)
+  const handleViewComplaint = (complaintId: string) => {
+    const complaint = complaints.find(c => c.id === complaintId)
+    if (complaint) {
+      setSelectedComplaint(complaint)
+      setViewDialogOpen(true)
+    }
   }
 
   const getStatusColor = (status: string) => {
@@ -211,6 +217,52 @@ export default function ComplaintsPage() {
           </div>
         </CardContent>
       </Card>
+
+      {/* View Complaint Dialog */}
+      <Dialog open={viewDialogOpen} onOpenChange={setViewDialogOpen}>
+        <DialogContent className="sm:max-w-lg">
+          <DialogHeader>
+            <DialogTitle>Complaint Details</DialogTitle>
+            <DialogDescription>View your complaint information</DialogDescription>
+          </DialogHeader>
+          {selectedComplaint && (
+            <div className="space-y-4 py-4">
+              <div className="space-y-2">
+                <Label>Ticket ID</Label>
+                <p className="font-medium">{selectedComplaint.ticketId}</p>
+              </div>
+              
+              <div className="space-y-2">
+                <Label>Department</Label>
+                <p>{selectedComplaint.department}</p>
+              </div>
+              
+              <div className="space-y-2">
+                <Label>Subject</Label>
+                <p>{selectedComplaint.subject}</p>
+              </div>
+              
+              <div className="space-y-2">
+                <Label>Date Raised</Label>
+                <p>{new Date(selectedComplaint.dateRaised).toLocaleDateString()}</p>
+              </div>
+              
+              <div className="space-y-2">
+                <Label>Status</Label>
+                <Badge className={getStatusColor(selectedComplaint.status)} variant="secondary">
+                  {selectedComplaint.status}
+                </Badge>
+              </div>
+
+              <div className="flex gap-2 pt-4">
+                <Button onClick={() => setViewDialogOpen(false)} className="flex-1 bg-cyan-800 hover:bg-cyan-900">
+                  Close
+                </Button>
+              </div>
+            </div>
+          )}
+        </DialogContent>
+      </Dialog>
 
       {/* Create Complaint Dialog */}
       <Dialog open={createDialogOpen} onOpenChange={setCreateDialogOpen}>
